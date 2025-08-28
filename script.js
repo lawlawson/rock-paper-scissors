@@ -5,3 +5,10 @@ function getComputerChoice() {
 }
 
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+  let humanChoice = prompt('Make your choice');
+  return humanChoice;
+}
+
+console.log(getHumanChoice());
