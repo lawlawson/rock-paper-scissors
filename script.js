@@ -7,14 +7,18 @@ function getComputerChoice() {
   return choice[randomChoice];
 }
 
-console.log(getComputerChoice());
-
 function getHumanChoice() {
-  const humanChoice = prompt('Make your choice');
+  let humanChoice = prompt('Make your choice (Rock, Paper, or Scissors)');
+  if (!humanChoice) return '';
+  humanChoice = humanChoice.trim().toLowerCase();
+  humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
+  const validChoices = ['Rock', 'Paper', 'Scissors'];
+  if (!validChoices.includes(humanChoice)) {
+    alert('Invalid choice! Please enter Rock, Paper, or Scissors.');
+    return getHumanChoice();
+  }
   return humanChoice;
 }
-
-console.log(getHumanChoice());
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === 'Rock' && computerChoice === 'Paper') {
@@ -39,13 +43,20 @@ function playRound(humanChoice, computerChoice) {
     humanScore++;
   } else if (humanChoice === 'Scissors' && computerChoice === 'Scissors') {
     console.log("It's a tie! Scissors equals Scissors");
+  } else if (humanChoice === 'Paper' && computerChoice === 'Paper') {
+    console.log("It's a tie! Paper equals Paper");
   }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+for (let i = 0; i <= 5; i++) {
+  const humanSelection = getHumanChoice();
+  const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+  console.log(`You chose: ${humanSelection}`);
+  console.log(`Computer chose: ${computerSelection}`);
 
-console.log(humanScore);
-console.log(computerScore);
+  playRound(humanSelection, computerSelection);
+
+  console.log(`Your Score: ${humanScore}`);
+  console.log(`Computer Score: ${computerScore}`);
+}
