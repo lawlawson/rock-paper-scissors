@@ -48,15 +48,13 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-for (let i = 0; i < 5; i++) {
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
-  console.log(`You chose: ${humanSelection}`);
-  console.log(`Computer chose: ${computerSelection}`);
+console.log(`You chose: ${humanSelection}`);
+console.log(`Computer chose: ${computerSelection}`);
 
-  playRound(humanSelection, computerSelection);
+playRound(humanSelection, computerSelection);
 
-  console.log(`Your Score: ${humanScore}`);
-  console.log(`Computer Score: ${computerScore}`);
-}
+console.log(`Your Score: ${humanScore}`);
+console.log(`Computer Score: ${computerScore}`);
