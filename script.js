@@ -1,23 +1,13 @@
 let humanScore = 0;
 let computerScore = 0;
+const rockBtn = document.getElementById('rock-btn');
+const paperBtn = document.getElementById('paper-btn');
+const scissorsBtn = document.getElementById('scissors-btn');
 
 function getComputerChoice() {
   const choice = ['Rock', 'Paper', 'Scissors'];
   const randomChoice = Math.floor(Math.random() * choice.length);
   return choice[randomChoice];
-}
-
-function getHumanChoice() {
-  let humanChoice = prompt('Make your choice (Rock, Paper, or Scissors)');
-  if (!humanChoice) return '';
-  humanChoice = humanChoice.trim().toLowerCase();
-  humanChoice = humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
-  const validChoices = ['Rock', 'Paper', 'Scissors'];
-  if (!validChoices.includes(humanChoice)) {
-    alert('Invalid choice! Please enter Rock, Paper, or Scissors.');
-    return getHumanChoice();
-  }
-  return humanChoice;
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -48,13 +38,32 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+rockBtn.addEventListener('click', () => {
+  const humanSelection = 'Rock';
+  const computerSelection = getComputerChoice();
+  console.log(`You chose: ${humanSelection}`);
+  console.log(`Computer chose: ${computerSelection}`);
+  playRound(humanSelection, computerSelection);
+  console.log(`Your Score: ${humanScore}`);
+  console.log(`Computer Score: ${computerScore}`);
+});
 
-console.log(`You chose: ${humanSelection}`);
-console.log(`Computer chose: ${computerSelection}`);
+paperBtn.addEventListener('click', () => {
+  const humanSelection = 'Paper';
+  const computerSelection = getComputerChoice();
+  console.log(`You chose: ${humanSelection}`);
+  console.log(`Computer chose: ${computerSelection}`);
+  playRound(humanSelection, computerSelection);
+  console.log(`Your Score: ${humanScore}`);
+  console.log(`Computer Score: ${computerScore}`);
+});
 
-playRound(humanSelection, computerSelection);
-
-console.log(`Your Score: ${humanScore}`);
-console.log(`Computer Score: ${computerScore}`);
+scissorsBtn.addEventListener('click', () => {
+  const humanSelection = 'Scissors';
+  const computerSelection = getComputerChoice();
+  console.log(`You chose: ${humanSelection}`);
+  console.log(`Computer chose: ${computerSelection}`);
+  playRound(humanSelection, computerSelection);
+  console.log(`Your Score: ${humanScore}`);
+  console.log(`Computer Score: ${computerScore}`);
+});
