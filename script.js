@@ -19,13 +19,28 @@ function displayResults(
   humanScore,
   computerScore
 ) {
+  let winnerMsg = '';
+  if (humanScore >= 5) {
+    winnerMsg = '<strong>You win the game!</strong>';
+  } else if (computerScore >= 5) {
+    winnerMsg = '<strong>Computer wins the game!</strong>';
+  }
   resultsDiv.innerHTML = `
     <p>You chose: ${humanSelection}</p>
     <p>Computer chose: ${computerSelection}</p>
     <p>${roundResult}</p>
     <p>Your Score: ${humanScore}</p>
     <p>Computer Score: ${computerScore}</p>
+    ${winnerMsg}
   `;
+}
+
+function checkGameOver() {
+  if (humanScore >= 5 || computerScore >= 5) {
+    rockBtn.disabled = true;
+    paperBtn.disabled = true;
+    scissorsBtn.disabled = true;
+  }
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -62,6 +77,7 @@ function playRound(humanChoice, computerChoice) {
     humanScore,
     computerScore
   );
+  checkGameOver();
 }
 
 rockBtn.addEventListener('click', () => {
